@@ -9,7 +9,7 @@ Glagol DSL includes grammatical declarations for Entities, Value Objects, Reposi
 
 How does Glagol DSL work?
 -------------------------
-Glagol DSL is a transpiler and the output language is PHP. Simply put, the Glagol DSL sources (*.g) are parsed, type-checked and then compiled into PHP source code. To achieve most of its functional the Glagol DSL environment relies strongly on the Lumen framework from Laravel and the Doctrine 2 ORM.
+Glagol DSL is a transpiler and the output language is PHP. Simply put, the Glagol DSL sources (*.g) are parsed, type-checked and then compiled into PHP source code. To achieve most of its functional capabilities the Glagol DSL environment relies strongly on the Lumen framework from Laravel and the Doctrine 2 ORM.
 
 Architecturally, Glagol DSL is a simple client-server application. The server app is the actually compiling your sources and the client is used to send compile requests and more. This approach provides performance benefits and it also allows the compiler to run over a network (Compiler-as-a-service).
 
