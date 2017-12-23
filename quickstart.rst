@@ -144,7 +144,7 @@ The final step is to install the PHP Composer packages::
 
 Hello world controller
 ----------------------
-After you have your directory structure set up it is time to create your first endpoint - the index page. For the purpose create a file :code:`src/HelloWorld/IndexController.g` with the following contents::
+After you have your directory structure set up it is time to create your first endpoint - the index page. For the purpose create a file :code:`src/HelloWorld/HelloWorldController.g` with the following contents::
 
     namespace HelloWorld
 
