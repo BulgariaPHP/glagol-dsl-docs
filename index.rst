@@ -7,13 +7,16 @@ Welcome to Glagol DSL's documentation!
 ======================================
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Contents:
+   :maxdepth: 2
+   :caption: Getting started
 
    introduction
    installation
-   quickstart_docker
-   quickstart_no_docker
+   quickstart
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Language Reference
 
 
 

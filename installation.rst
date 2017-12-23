@@ -31,6 +31,7 @@ If for any reason you wish to manually configure the environment here is a list 
 - WebServer (nginx, apache, etc)
 - :code:`pdo` and :code:`pdo_mysql` PHP extensions
 - :code:`ds` PHP extension (:code:`pecl install ds`)
+- :code:`mbstring` PHP extension (:code:`pecl install mbstring`)
 
 Get the server app
 ------------------
