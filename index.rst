@@ -13,6 +13,7 @@ Welcome to Glagol DSL's documentation!
    introduction
    installation
    quickstart_docker
+   quickstart_no_docker
 
 
 

@@ -1,7 +1,7 @@
 .. _quickstart_docker:
 
-Quickstart with Docker Compose
-==============================
+New project with Docker
+=======================
 After a successful :ref:`installation` of Glagol DSL server and client apps you are ready to start developing. As discussed within the installation section the fastest way to start developing is to use Docker and Docker Compose.
 
 Create a new project structure
