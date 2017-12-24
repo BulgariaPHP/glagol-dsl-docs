@@ -18,7 +18,7 @@ Make sure you have java version 1.8 installed before you can use Glagol DSL::
 
 Environment
 ###########
-Running Glagol DSL apps requires a very typical PHP-MySQL-WebServer bundle. However, if you use Docker and Docker Compose, you might just grab `the preconfigured Docker Compose default project skeleton for Glagol DSL apps <https://github.com/glagol-dsl/docker-compose-project-skeleton>`_. This repository contains a preconfigured development-ready :code:`docker-compose.yml` for Glagol DSL applications. **See** :ref:`quickstart_docker` **tutorial for how to use the default project skeleton.**
+Running Glagol DSL apps requires a very typical PHP-MySQL-WebServer bundle. However, if you use Docker and Docker Compose, you might just grab `the preconfigured Docker Compose default project skeleton for Glagol DSL apps <https://github.com/glagol-dsl/docker-compose-project-skeleton>`_. This repository contains a preconfigured development-ready :code:`docker-compose.yml` for Glagol DSL applications. **See** :ref:`setup_with_docker` **tutorial for how to use the default project skeleton.**
 
 .. hint::
 
@@ -83,3 +83,9 @@ The expected output is the following::
 The initialization phase might take up to 10 seconds depending on your machine's performance. You need to keep the Glagol DSL server running if you wish to compile.
 
 Next section will explain more about setting up an initial project structure, compiling and running an app.
+
+Get the IDE plugin
+------------------
+Glagol DSL supports an IntelliJ IDEA (PhpStorm, WebStorm, etc.) plugin. You can find in in the `JetBrains repositories <https://plugins.jetbrains.com/plugin/9869-glagol-dsl>`_ .
+
+.. image:: _static/ide_plugin.png
