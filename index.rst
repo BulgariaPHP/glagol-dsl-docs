@@ -14,7 +14,8 @@ Welcome to Glagol DSL's documentation!
    installation
    setup_with_docker
    setup_no_docker
-   hello_world_controller
+   tutorial_hello_world_controller
+   tutorial_entities
 
 .. toctree::
    :maxdepth: 2

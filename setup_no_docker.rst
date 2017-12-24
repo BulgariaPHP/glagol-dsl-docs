@@ -98,4 +98,4 @@ The final step is to install the PHP Composer packages::
 
 .. hint::
 
-    PHP compiled sources are generated in the :code:`./out/` directory of your project's root. The nginx server root is configured to map to :code:`./out/public` directory (*This is* :code:`/var/www/html/public` *from within the nginx docker container*).
+    PHP compiled sources are generated in the :code:`./out/` directory of your project's root. Make sure to map your web server's root to :code:`./out/public` directory.

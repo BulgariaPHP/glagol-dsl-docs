@@ -33,8 +33,8 @@ The output should be something like::
 
     PHP compiled sources are generated in the :code:`./out/` directory of your project's root. If you are not using the preconfigured Docker Compose project skeleton you need to map your web server's root to :code:`./out/public` directory.
 
-Testing the new app
--------------------
+Testing the index
+-----------------
 The Docker Compose default project skeleton will run nginx on port :code:`8081` (if you installed a fresh nginx manually the port is porbably :code:`80`)::
 
     $ curl localhost:8081/hello-world
