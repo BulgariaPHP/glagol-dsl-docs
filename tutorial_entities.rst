@@ -10,20 +10,24 @@ Usually, entities are maintained with the help of the so called `Object-relation
 
 Create your first entity
 ------------------------
-Lets create a Glagol DSL entity. Create a new package by making a directory named :code:`src/Article`. Next, put the following code inside::
+Lets create a Glagol DSL entity. Create a new package by making a directory named :code:`src/Article`. Next, put the following code inside:
+
+.. code-block:: none
 
     namespace Article
 
     entity Article {
         int id;
         string title;
-        string contents;
+        string category;
         string author;
     }
 
 Save this file as :code:`src/Article/Article.g`. Notice that the file name and path needs to match the defined namespace and entity name. Otherwise, the compiler will notify with an error that there is naming inconsistency.
 
-To show a use cases of this entity lets create a new fresh controller for the purpose :code:`src/Article/ArticleController.g`::
+To show a use cases of this entity lets create a new fresh controller for the purpose :code:`src/Article/ArticleController.g`:
+
+.. code-block:: none
 
     namespace Article
 
@@ -40,8 +44,86 @@ Compile the sources using :code:`$ glagol compile` and then :code:`$ curl localh
     {
         "id": null,
         "title": null,
-        "contents": null,
+        "category": null,
         "author": null
     }
 
+Constructors
+------------
+Entities can have constructors. They are defined in a Java-like way:
 
+.. code-block:: none
+
+    namespace Article
+
+    entity Article {
+        int id;
+        string title;
+        string category;
+        string author;
+
+        Article(string articleTitle) {
+            title = articleTitle;
+        }
+    }
+
+Constructors must use the name of the entity. Furthermore, you can override constructors as long as they do not have duplicating signatures (the combination of arguments being passed):
+
+.. code-block:: none
+
+    namespace Article
+
+    entity Article {
+        int id;
+        string title;
+        string category;
+        string author;
+
+        Article(string articleTitle) {
+            title = articleTitle;
+        }
+
+        Article(string article, string author) {
+            this.title = article;
+            this.author = author;
+        }
+    }
+
+Notice how the second constructor uses :code:`this` to assign property values. This is because the argument names match the property names. Unlike PHP, properties can be accessed directly from the scope of any method (including constructors). Only when an argument has the same name as a defined property you need to use :code:`this.propertyName` notation to differentiate the property from the parameter within the same scope.
+
+Furthermore, if you now try to compile the app you will most probably get a type-check error like this:
+
+.. code-block:: none
+
+    Cannot compile, errors found:
+    [/src/Article/ArticleController.g:5] Cannot match constructor Article()
+
+This is because you do not have a constructor that accepts no argument as used in the controller. Lets add some parameters:
+
+.. code-block:: none
+
+    namespace Article
+
+    rest controller /article {
+        index {
+            return new Article("Virus", "Marko Markovic Brass Band");
+        }
+    }
+
+This instantiation will use the second constructor because of the mathcing signature (:code:`string, string`).
+Next, compile the app and after you :code:`$ curl localhost:8081/article` the output will be:
+
+.. code-block:: json
+
+    {
+        "id": null,
+        "title": "Virus",
+        "category": null,
+        "author": "Marko Markovic Brass Band"
+    }
+
+Guards
+------
+Functional languages like Haskell support the concept of function *guards*. A guard is simply a boolean expression that is triggered before the function's body. Furthermore, if the guard expression evaluates as :code:`true` then the function logic will be executed. Otherwise, the next override declaration with the same signature will be checked until success. If no overriding qualifies for execution an error is thrown.
+
+Glagol DSL implements guards that can be applied to constructors and methods.
