@@ -16,23 +16,6 @@ Make sure you have java version 1.8 installed before you can use Glagol DSL::
     Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
     Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)
 
-Environment
-###########
-Running Glagol DSL apps requires a very typical PHP-MySQL-WebServer bundle. However, if you use Docker and Docker Compose, you might just grab `the preconfigured Docker Compose default project skeleton for Glagol DSL apps <https://github.com/glagol-dsl/docker-compose-project-skeleton>`_. This repository contains a preconfigured development-ready :code:`docker-compose.yml` for Glagol DSL applications. **See** :ref:`setup_with_docker` **tutorial for how to use the default project skeleton.**
-
-.. hint::
-
-    Learn how to install Docker from here: https://docs.docker.com/engine/installation/ and Docker Compose from here: https://docs.docker.com/compose/install/ .
-
-If for any reason you wish to manually configure the environment here is a list of dependencies that Glagol DSL requires:
-
-- PHP>=7.1
-- MySQL>=5.7
-- WebServer (nginx, apache, etc)
-- :code:`pdo` and :code:`pdo_mysql` PHP extensions
-- :code:`ds` PHP extension (:code:`pecl install ds`)
-- :code:`mbstring` PHP extension (:code:`pecl install mbstring`)
-
 Get the server app
 ------------------
 Download the :code:`glagol-dsl-server-XXX.jar` from the `latest release <https://github.com/BulgariaPHP/glagol-dsl/releases/latest>`_::
