@@ -2,7 +2,7 @@
 
 First Entity
 ============
-One the most fundamental patterns of enterprise software nowadays is the Entity. Entity is simply an object that is used to persist data and state during runtime. Furthermore, entities are usually distinguished by some form of identity. For example, in the case with a relational database table, an entity can be identified by a primary key field and its value.
+One the most fundamental patterns of enterprise software nowadays is the Entity. In general, an entity is simply an object that is used to persist data and state during runtime. Moreover, entities are usually distinguished by some form of identity. For example, in the case with a relational database table an entity can be identified by a primary key field and its value.
 
 Glagol DSL supports a built-in syntax declaration for entities that can be automatically bundled with database tables. Generally speaking, the purpose of having a built-in language structure for entities is to hide the underlying application logic from the developer and bring the focus on the entity as a business item itself.
 
@@ -67,7 +67,7 @@ Entities can have constructors. They are defined in a Java-like way:
         }
     }
 
-Constructors must use the name of the entity. Furthermore, you can override constructors as long as they do not have duplicating signatures (the combination of arguments being passed):
+Constructors must use the name of the entity. Additionally, you can override constructors as long as they do not have duplicating signatures (the combination of arguments being passed):
 
 .. code-block:: none
 
@@ -91,7 +91,7 @@ Constructors must use the name of the entity. Furthermore, you can override cons
 
 Notice how the second constructor uses :code:`this` to assign property values. This is because the argument names match the property names. Unlike PHP, properties can be accessed directly from the scope of any method (including constructors). Only when an argument has the same name as a defined property you need to use :code:`this.propertyName` notation to differentiate the property from the parameter within the same scope.
 
-Furthermore, if you now try to compile the app you will most probably get a type-check error like this:
+Try to compile the app. What you will get is a type-check error like this:
 
 .. code-block:: none
 
@@ -216,4 +216,4 @@ Lets default the song genre by adding a constructor without a guard:
         }
     }
 
-In the next chapter explains how to read, persist and delete entities from the database.
+The next chapter explains how to read, persist and delete entities from the database.

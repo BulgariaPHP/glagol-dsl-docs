@@ -99,3 +99,18 @@ The final step is to install the PHP Composer packages::
 .. hint::
 
     PHP compiled sources are generated in the :code:`./out/` directory of your project's root. Make sure to map your web server's root to :code:`./out/public` directory.
+
+Set environment variables
+-------------------------
+The final step is to create an :code:`./out/.env` file that will hold environment variables (such as app's name and MySQL connection credentials). Here is an example contents:
+
+.. code-block:: ini
+
+    APP_NAME="Glagol DSL Sandbox"
+    APP_ENV=local
+    APP_DEBUG=true
+    DB_HOST=localhost
+    DB_PASSWORD=123
+    DB_USERNAME=root
+    DB_DATABASE=glagol
+
