@@ -18,7 +18,7 @@ Make sure you have java version 1.8 installed before you can use Glagol DSL::
 
 Get the server app
 ------------------
-Download the :code:`glagol-dsl-server-XXX.jar` from the `latest release <https://github.com/BulgariaPHP/glagol-dsl/releases/latest>`_::
+Download the :code:`glagol-dsl-server-0.5.3.jar` from the `latest release <https://github.com/BulgariaPHP/glagol-dsl/releases/latest>`_::
 
     $ wget https://github.com/BulgariaPHP/glagol-dsl/releases/download/0.5.3/glagol-dsl-server-0.5.3.jar ~/glagol-dsl-server.jar
 
