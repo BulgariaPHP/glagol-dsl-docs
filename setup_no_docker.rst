@@ -4,6 +4,10 @@ Setup new project (without Docker)
 ==================================
 This section describes how you can manually setup your environment for developing with Glagol DSL.
 
+.. warning::
+
+    Skip this chapter if you already have setup your project using Docker.
+
 Install PHP, MySQL and a Web Server
 -----------------------------------
 You need PHP 7.1 and MySQL 5.7 at the very least. The choice of a web server is not crucial, both nginx and apache were tested and proven to work perfectly fine.
