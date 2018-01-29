@@ -18,6 +18,7 @@ Welcome to Glagol DSL's documentation!
    tutorial_entities
    tutorial_persisting_entities
    tutorial_finding_entities
+   tutorial_rest
 
 .. toctree::
    :maxdepth: 2

@@ -155,5 +155,26 @@ Notice that this time there is a value assigned to the :code:`id` field. General
     +----+-------+--------+---------------------------+
     1 row in set (0.00 sec)
 
-In the next chapter we are going to look into how to query entities using Glagol DSL's embedded query language!
+Removing entities
+-----------------
+Very similarly to persisting entities we can also remove such. However, instead of the :code:`persist` statement Glagol DSL provides the :code:`remove` counterpart:
 
+.. code-block:: none
+
+    namespace MusicLib
+
+    repository for Song {
+        public void save(Song song) {
+            persist song;
+            flush;
+        }
+
+        public void remove(Song song) {
+            remove song;
+            flush;
+        }
+    }
+
+Notice, that flushing the requested changes is still necessary if you want to delete the entity records.
+
+In the next chapter we are going to look into how to query entities using Glagol DSL's embedded query language!

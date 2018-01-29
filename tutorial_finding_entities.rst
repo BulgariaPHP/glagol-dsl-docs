@@ -23,18 +23,23 @@ We start by creating a :code:`findAll` method in the Song repository:
             flush;
         }
 
-        public Song[] findAll() {
-            User[] users = SELECT u[] FROM User u;
+        public void remove(Song song) {
+            remove song;
+            flush;
+        }
 
-            return users;
+        public Song[] findAll() {
+            Song[] songs = SELECT s[] FROM Song s;
+
+            return songs;
         }
     }
 
-Secondly, lets look closely at what we did here. Obviously, the :code:`SELECT u FROM User u` is a Glagol Query. One can easily recognize the great similarities between SQL and Glagol QL. However, think of it this way - Glagol Query Language is used to ask for entities where SQL usually queries database tables directly. Therefore, the result of a Glagol Query is either an entity or a collection of entities.
+Secondly, lets look closely at what we did here. Obviously, the :code:`SELECT s FROM Song s` is a Glagol Query. One can easily recognize the great similarities between SQL and Glagol QL. However, think of it this way - Glagol Query Language is used to ask for entities where SQL usually queries database tables directly. Therefore, the result of a Glagol Query is either an entity or a collection of entities.
 
-Lets break down the query from above. The first part is :code:`SELECT u[]`. Simply put, we say that we want to select a list of :code:`u`'s where :code:`u` is just an alias defined in the :code:`FROM` part. Furthermore, :code:`FROM User u` is exactly the part where we first select the target entity and then we alias it so it can be referenced in other parts of the query.
+Lets break down the query from above. The first part is :code:`SELECT s[]`. Simply put, we say that we want to select a list of :code:`s`'s where :code:`s` is just an alias defined in the :code:`FROM` part. Furthermore, :code:`FROM Song s` is exactly the part where we first select the target entity and then we alias it so it can be referenced in other parts of the query.
 
-Notice how the selection part says :code:`u[]`. In case you remove the brackets then the query will return the first entity directly. Hence, when you want to select the whole result set then you simply add the brackets.
+Notice how the selection part says :code:`s[]`. In case you remove the brackets then the query will return the first entity directly. Hence, when you want to select the whole result set then you simply add the brackets.
 
 Thirdly, since queries are just expressions we can refactor the bit from above and simply return the query expression directly:
 
@@ -48,8 +53,13 @@ Thirdly, since queries are just expressions we can refactor the bit from above a
             flush;
         }
 
+        public void remove(Song song) {
+            remove song;
+            flush;
+        }
+
         public Song[] findAll() {
-            return SELECT u[] FROM User u;
+            return SELECT s[] FROM Song s;
         }
     }
 
@@ -85,16 +95,21 @@ Next task is to create a typical :code:`find(int id)` method that will query for
             flush;
         }
 
+        public void remove(Song song) {
+            remove song;
+            flush;
+        }
+
         public Song[] findAll() {
-            return SELECT u[] FROM User u;
+            return SELECT s[] FROM Song s;
         }
 
         public Song find(int id) {
-            return SELECT u FROM User u WHERE u.id = <<id>>;
+            return SELECT s FROM Song s WHERE s.id = <<id>>;
         }
     }
 
-As mentioned earlier, if we want to select only one entity we simply write :code:`SELECT u`. Secondly, lets investigate the :code:`WHERE u.id = <<id>>` clause. It is obvious that we access a field from the entity by targeting the :code:`u` alias. The right side of the equation indicates that we embed a Glagol DSL expression. In the example above we simply pass the :code:`id` parameter that is provided by the method. However, we can use any expression we like there (like :code:`WHERE u.id = <<id + 232>>`). The :code:`<<` and :code:`>>` are just delimiters that indicate the start and end of an embedded expression.
+As mentioned earlier, if we want to select only one entity we simply write :code:`SELECT s`. Secondly, lets investigate the :code:`WHERE s.id = <<id>>` clause. It is obvious that we access a field from the entity by targeting the :code:`s` alias. The right side of the equation indicates that we embed a Glagol DSL expression. In the example above we simply pass the :code:`id` parameter that is provided by the method. However, we can use any expression we like there (like :code:`WHERE s.id = <<id + 232>>`). The :code:`<<` and :code:`>>` are just delimiters that indicate the start and end of an embedded expression.
 
 In order to show how the finder method works lets modify our sandbox controller in the following way:
 
