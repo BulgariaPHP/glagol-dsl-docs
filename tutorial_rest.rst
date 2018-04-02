@@ -81,11 +81,13 @@ Lets look at the differences. Instead of accepting :code:`int id` as a parameter
 
 Store action
 ------------
-The :code:`store` method is there to handle :code:`POST` requests aimed to create new resources. Additionally, Glagol DSL provides a :code:`@autofill` annotation that will map the input payload to an entity and hydrate its values:
+The :code:`store` method is there to handle :code:`POST` requests aimed to create new resources. Additionally, the :code:`Glagol::Http::Request` object is necessary for extracting input :code:`POST` data from the request:
 
 .. code-block:: none
 
     namespace MusicLib
+
+    import Glagol::Http::Request;
 
     rest controller /song {
 
@@ -99,13 +101,24 @@ The :code:`store` method is there to handle :code:`POST` requests aimed to creat
             return song;
         }
 
-        store (@autofill Song song) {
+        store (Request request) {
+            Song song = new Song(request.input("title"), request.input("author", "unknown"));
+
             songs.save(song);
             return song;
         }
     }
 
 Do not forget to compile the source!
+
+.. hint::
+
+    The :code:`Glagol::Http::Request` object is provided by the Glagol DSL standard library. It provides the following methods for extracting :code:`POST` data::
+
+        string input(string key);
+        string input(string key, string default);
+
+    Use the :code:`string default` parameter to provide a default value if the :code:`string key` does not exist in the request payload.
 
 Since Glagol DSL relies on Lumen Framework for its runtime both json and x-www-form-urlencoded payloads are supported. For this example we are going to use a json payload:
 
@@ -115,9 +128,9 @@ Since Glagol DSL relies on Lumen Framework for its runtime both json and x-www-f
 
 Update action
 -------------
-The :code:`update` action is similar to both show and store actions in a way. First, just like :code:`show` it requires a parameter by which to identify a resource. Secondly, just like :code:`store` it can use :code:`@autofill` to map and populate an entity.
+The :code:`update` action is similar to both show and store actions in a way. First, just like :code:`show` it requires a parameter by which to identify a resource. Secondly, just like :code:`store` it can use the :code:`input()` methods from :code:`Glagol::Http::Request`.
 
-In contrast to both actions, the HTTP request method for :code:`update` is :code:`PUT`. Furthermore, we can gradually use a combination of :code:`@autofill` and :code:`@autofind` when initializing the :code:`update` action:
+In contrast to both actions, the HTTP request method for :code:`update` is :code:`PUT`. Lets look at this example:
 
 .. code-block:: none
 
@@ -135,14 +148,39 @@ In contrast to both actions, the HTTP request method for :code:`update` is :code
             return song;
         }
 
-        store (@autofill Song song) {
+        store (Request request) {
+            Song song = new Song(request.input("title"), request.input("author", "unknown"));
+
             songs.save(song);
             return song;
         }
 
-        update (@autofill @autofind Song song) {
+        update (@autofind Song song, Request request) {
+            song.setTitle(request.input("title"));
+            song.setAuthor(request.input("author", "unknown"));
+
             songs.save(song);
+
             return song;
+        }
+    }
+
+Additionally, the example above requires two setter methods in the entity:
+
+.. code-block:: none
+
+    namespace MusicLib
+
+    @table="songs"
+    entity Song {
+        // ... properties and constructors from before...
+
+        public void setTitle(string title) {
+            this.title = title;
+        }
+
+        public void setAuthor(string author) {
+            this.author = author;
         }
     }
 
@@ -172,13 +210,19 @@ Glagol DSL provides the :code:`delete` action to handle :code:`DELETE` HTTP requ
             return song;
         }
 
-        store (@autofill Song song) {
+        store (Request request) {
+            Song song = new Song(request.input("title"), request.input("author", "unknown"));
+
             songs.save(song);
             return song;
         }
 
-        update (@autofill @autofind Song song) {
+        update (@autofind Song song, Request request) {
+            song.setTitle(request.input("title"));
+            song.setAuthor(request.input("author", "unknown"));
+
             songs.save(song);
+
             return song;
         }
 
@@ -215,13 +259,19 @@ First, the :code:`create` action is usually used to return an initial state enti
             return song;
         }
 
-        store (@autofill Song song) {
+        store (Request request) {
+            Song song = new Song(request.input("title"), request.input("author", "unknown"));
+
             songs.save(song);
             return song;
         }
 
-        update (@autofill @autofind Song song) {
+        update (@autofind Song song, Request request) {
+            song.setTitle(request.input("title"));
+            song.setAuthor(request.input("author", "unknown"));
+
             songs.save(song);
+
             return song;
         }
 
