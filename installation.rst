@@ -20,7 +20,7 @@ Get the server app
 ------------------
 Download the :code:`glagol-dsl-server-0.6.1.jar` from the `latest release <https://github.com/BulgariaPHP/glagol-dsl/releases/latest>`_::
 
-    $ wget https://github.com/BulgariaPHP/glagol-dsl/releases/download/0.5.3/glagol-dsl-server-0.6.1.jar ~/glagol-dsl-server.jar
+    $ wget https://github.com/BulgariaPHP/glagol-dsl/releases/download/0.6.1/glagol-dsl-server-0.6.1.jar ~/glagol-dsl-server.jar
 
 Then you can alias the :code:`glagol-server` as a command so that it can be used easily. To do that you simply add to the end of :code:`~/.bashrc` (or :code:`~/.zshrc`) the following command::
 
