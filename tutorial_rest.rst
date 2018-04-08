@@ -155,7 +155,7 @@ In contrast to both actions, the HTTP request method for :code:`update` is :code
             return song;
         }
 
-        update (@autofind Song song, Request request) {
+        update (Request request, @autofind Song song) {
             song.setTitle(request.input("title"));
             song.setAuthor(request.input("author", "unknown"));
 
@@ -217,7 +217,7 @@ Glagol DSL provides the :code:`delete` action to handle :code:`DELETE` HTTP requ
             return song;
         }
 
-        update (@autofind Song song, Request request) {
+        update (Request request, @autofind Song song) {
             song.setTitle(request.input("title"));
             song.setAuthor(request.input("author", "unknown"));
 
@@ -266,7 +266,7 @@ First, the :code:`create` action is usually used to return an initial state enti
             return song;
         }
 
-        update (@autofind Song song, Request request) {
+        update (Request request, @autofind Song song) {
             song.setTitle(request.input("title"));
             song.setAuthor(request.input("author", "unknown"));
 
