@@ -110,7 +110,9 @@ This is because you do not have a constructor that accepts no argument as used i
         }
     }
 
-This instantiation will use the second constructor because of the mathcing signature (:code:`string, string`).
+This instantiation will use the second constructor because of the matching signature (:code:`string, string`).
+Note that glagol only accepts double quotes :code:`"` for strings and not single quotes.
+
 Next, compile the app and after you :code:`$ curl localhost:8081/song` the output will be:
 
 .. code-block:: json
@@ -217,3 +219,63 @@ Lets default the song genre by adding a constructor without a guard:
     }
 
 The next chapter explains how to read, persist and delete entities from the database.
+
+Relationships
+------
+Glagol DSL also supports database relationships. Say we have a :code:`genres` table that the :code:`songs` table has a foreign key relation to from a field :code:`genre_id`.
+
+.. code-block:: console
+
+    mysql> SELECT * FROM glagol.songs;
+    +----+-------+----------+---------------------------+
+    | id | title | genre_id | author                    |
+    +----+-------+----------+---------------------------+
+    |  1 | Virus |        1 | Marko Markovic Brass Band |
+    +----+-------+----------+---------------------------+
+
+	mysql> SELECT * FROM glagol.genres;
+    +----+--------+
+	| id | name   |
+    +----+--------+
+	|  1 | Balkan |
+    +----+--------+
+
+If you create a Genre entity, you can type hint it in the Song entity and Glagol DSL will automatically lazy load it.
+
+.. code-block:: none
+
+	namespace MusicLib
+
+	@table="genres"
+	entity Genre {
+		@id
+		@sequence
+		int id;
+
+		string name;
+	}
+
+.. code-block:: none
+
+    namespace MusicLib
+
+    entity Song {
+        int id;
+        string title;
+        Genre genre;
+        string author;
+	}
+
+Querying songs will now result in
+
+.. code-block:: json
+
+    {
+        "id": null,
+        "title": "Virus",
+        "genre": {
+            "id": 1,
+            "name": "Balkan"
+        },
+        "author": "Marko Markovic Brass Band"
+    }

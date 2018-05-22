@@ -102,7 +102,8 @@ Yep - it is *that* simple. Repositories expose the :code:`persist` and :code:`fl
 
 .. note::
 
-    Entity persisting and flushing is inspired and based on Doctrine 2 ORM's way of operating with entities.
+    Entity persisting and flushing is inspired and based on `Doctrine 2 ORM
+    <https://www.doctrine-project.org/projects/doctrine-orm/en/latest/reference/working-with-objects.html>`_'s way of operating with entities.
 
 Finally, lets save our Song entity into the database! Modify the :code:`SongController.g` to use the repository:
 
