@@ -32,5 +32,13 @@ And then you are ready to spin-up the Docker Compose environment::
 
     The Docker Compose configuration will automatically install all PHP Composer dependencies upon containers startup. In fact, it will do so every time you spin-up the containers. See :code:`./scripts/composer.sh` for how it works under the hood.
 
+The credentials for connecting to the mysql database can be found in :code:`docker-compose.yml`.
+By default they are:
+
+	:Host: localhost
+	:port: 3307
+	:database: glagol
+	:user: root
+	:password: 123
 
 Next you can proceed directly to :ref:`hello_world_controller`.

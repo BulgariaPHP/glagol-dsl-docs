@@ -24,7 +24,7 @@ Download the :code:`glagol-dsl-server-0.6.3.jar` from the `latest release <https
 
 Then you can alias the :code:`glagol-server` as a command so that it can be used easily. To do that you simply add to the end of :code:`~/.bashrc` (or :code:`~/.zshrc`) the following command::
 
-    alias glagol-server='java -Xmx400m -jar /full/path/tp/glagol-dsl-server.jar'
+    alias glagol-server='java -Xmx400m -jar /full/path/to/glagol-dsl-server.jar'
 
 And then reload your rc::
 
@@ -42,7 +42,11 @@ Similarly to the server app the client app jars are available on `Github release
 
 Then you can alias the :code:`glagol` as a command so that it can be used easily. To do that you simply add to the end of :code:`~/.bashrc` (or :code:`~/.zshrc`) the following command::
 
-    alias glagol='java -jar /full/path/tp/glagol-dsl-client.jar'
+    alias glagol='java -jar /full/path/to/glagol-dsl-client.jar'
+
+.. attention::
+
+    When using the client as of version >= 0.4, for now you have to run compile with the `-l` (--no-ssh-auth) flag until the ssh feature is completed.
 
 And then reload your rc::
 

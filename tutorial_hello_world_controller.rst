@@ -35,7 +35,7 @@ The output should be something like::
 
 Testing the index
 -----------------
-The Docker Compose default project skeleton will run nginx on port :code:`8081` (if you installed a fresh nginx manually the port is porbably :code:`80`)::
+The Docker Compose default project skeleton will run nginx on port :code:`8081` (if you installed a fresh nginx manually the port is probably :code:`80`)::
 
     $ curl localhost:8081/hello-world
 
